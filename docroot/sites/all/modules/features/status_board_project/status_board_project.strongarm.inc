@@ -138,5 +138,12 @@ function status_board_project_strongarm() {
   $strongarm->value = 'projects';
   $export['site_frontpage'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'site_name';
+  $strongarm->value = 'Project Status Board';
+  $export['site_name'] = $strongarm;
+
   return $export;
 }

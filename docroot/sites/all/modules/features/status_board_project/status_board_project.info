@@ -41,6 +41,7 @@ features[variable][] = node_options_project
 features[variable][] = node_preview_project
 features[variable][] = node_submitted_project
 features[variable][] = site_frontpage
+features[variable][] = site_name
 features[views_view][] = project_team
 features[views_view][] = projects
 features_exclude[dependencies][ctools] = ctools
