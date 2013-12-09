@@ -1,11 +1,14 @@
-.view-projects .views-row {
+.view-project-team,
+h3 {
   clear: left;
 }
 
 .view-project-team .views-row {
-  clear: none;
-  width: 200px;
+  width: 150px;
   float: left;
+  margin-left: 20px;
+}
+.view-project-team .views-row img {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -13,6 +16,7 @@
 
 .view-projects .progress-bar {
   height: 20px;
+  clear: left;
 }
 
 .view-projects .progress-bar-segment {

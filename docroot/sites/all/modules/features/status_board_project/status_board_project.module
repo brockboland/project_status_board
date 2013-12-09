@@ -74,7 +74,8 @@ function theme_status_board_project_sow_progress($vars) {
         // Add spacer between SOWs
         if ($index > 0) {
           $sow_split_interval = $range[0] - $vars['ranges'][$index-1][1];
-          $sow_split_percent = ceil($sow_split_interval / $full_range * 100);
+          // Make sure the segment between SOWs is at least 1%
+          $sow_split_percent = max(1, ceil($sow_split_interval / $full_range * 100));
           $return['#markup'] .= '<div class="progress-bar-segment progress-bar-segment-divider" style="width: ' . $sow_split_percent . '%;"></div>';
         }
         // See if this range contains today
