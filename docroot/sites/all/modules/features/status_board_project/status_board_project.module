@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Status Board Project feature.
+ */
+
+include_once 'status_board_project.features.inc';
