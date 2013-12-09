@@ -70,7 +70,14 @@ function theme_status_board_project_sow_progress($vars) {
       $return['#attached']['css'][] = drupal_get_path('module', 'status_board_project') . '/status_board.css';
 
       $class = 'progress-bar-segment-past';
+
+      // Each range is a two item array, containing start and end timestamps
       foreach ($vars['ranges'] as $index => $range) {
+        // If this range starts after today, make sure the class has been updated
+        if ($range[0] > REQUEST_TIME) {
+          $class = 'progress-bar-segment-future';
+        }
+
         // Add spacer between SOWs
         if ($index > 0) {
           $sow_split_interval = $range[0] - $vars['ranges'][$index-1][1];

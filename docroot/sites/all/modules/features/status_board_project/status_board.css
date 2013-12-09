@@ -1,3 +1,7 @@
+.view-projects h3 {
+  font-size: 200%;
+}
+
 .view-project-team,
 h3 {
   clear: left;
