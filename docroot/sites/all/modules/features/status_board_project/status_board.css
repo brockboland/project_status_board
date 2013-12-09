@@ -26,13 +26,25 @@ h3 {
 .view-projects .progress-bar-segment {
   float: left;
   height: 20px;
-  background-color: blue;
+  background-color: cornflowerblue;
 }
 
 .view-projects .progress-bar-segment-future {
-  background-color: gray;
+  background-color: #666;
+}
+
+.view-projects .progress-bar-start-future {
+  border-left: 4px solid red;
+  margin-left: -4px;
 }
 
 .view-projects .progress-bar-segment-divider {
-  background-color: black;
+  background-color: #333;
+}
+
+.view-projects .progress-bar .progress-bar-today {
+  position: absolute;
+  height: 20px;
+  width: 4px;
+  background-color: red;
 }
