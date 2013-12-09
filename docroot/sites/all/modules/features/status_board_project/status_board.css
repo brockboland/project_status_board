@@ -1,0 +1,30 @@
+.view-projects .views-row {
+  clear: left;
+}
+
+.view-project-team .views-row {
+  clear: none;
+  width: 200px;
+  float: left;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.view-projects .progress-bar {
+  height: 20px;
+}
+
+.view-projects .progress-bar-segment {
+  float: left;
+  height: 20px;
+  background-color: blue;
+}
+
+.view-projects .progress-bar-segment-future {
+  background-color: gray;
+}
+
+.view-projects .progress-bar-segment-divider {
+  background-color: black;
+}

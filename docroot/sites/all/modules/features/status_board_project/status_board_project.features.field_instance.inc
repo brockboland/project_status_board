@@ -32,7 +32,7 @@ function status_board_project_field_default_field_instances() {
     ),
     'entity_type' => 'multifield',
     'field_name' => 'field_date_range',
-    'label' => 'Date range',
+    'label' => 'Date Range',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -150,8 +150,8 @@ function status_board_project_field_default_field_instances() {
         'field_date_range' => array(
           'und' => array(
             0 => array(
-              'value' => '2013-12-09 00:00:00',
-              'value2' => '2013-12-09 00:00:00',
+              'value' => '',
+              'value2' => '',
               'show_todate' => TRUE,
               'timezone' => 'Europe/Berlin',
               'offset' => 3600,
@@ -175,7 +175,7 @@ function status_board_project_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'multifield_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -196,7 +196,7 @@ function status_board_project_field_default_field_instances() {
       'module' => 'multifield',
       'settings' => array(),
       'type' => 'multifield_default',
-      'weight' => -3,
+      'weight' => -1,
     ),
   );
 
@@ -244,7 +244,7 @@ function status_board_project_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Date range');
+  t('Date Range');
   t('Name');
   t('SOWs');
   t('Team');

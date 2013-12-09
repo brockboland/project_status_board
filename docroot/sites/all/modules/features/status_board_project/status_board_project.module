@@ -5,3 +5,92 @@
  */
 
 include_once 'status_board_project.features.inc';
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function status_board_project_field_formatter_info() {
+  return array(
+    'sow_progress' => array(
+      'label' => t('SOW Progress Bar'),
+      'field types' => array('sow'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function status_board_project_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  switch ($display['type']) {
+    case 'sow_progress':
+      $date_ranges = array();
+      foreach ($items as $delta => $item) {
+        $date_info = $item['field_date_range'][LANGUAGE_NONE][0];
+        $date_ranges[] = array($date_info['value'], $date_info['value2']);
+      }
+
+      $element[0] = array(
+        '#theme' => 'status_board_project_sow_progress',
+        '#ranges' => $date_ranges,
+      );
+      break;
+  }
+
+  return $element;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function status_board_project_theme($existing, $type, $theme, $path) {
+  return array(
+    'status_board_project_sow_progress' => array(
+      'variables' => array('ranges' => array()),
+    ),
+  );
+}
+
+function theme_status_board_project_sow_progress($vars) {
+  $return = array();
+  if (!empty($vars['ranges'])) {
+    $ranges = $vars['ranges'];
+    $start = $ranges[0][0];
+    $end = $ranges[count($ranges)-1][1];
+    $full_range = $end - $start;
+    if ($full_range > 0) {
+      $return['#prefix'] = '<div class="progress-bar">';
+      $return['#suffix'] = '</div>';
+      $return['#suffix'] = '</div>';
+      $return['#markup'] = '';
+      $return['#attached']['css'][] = drupal_get_path('module', 'status_board_project') . '/status_board.css';
+
+      $class = 'progress-bar-segment-past';
+      foreach ($vars['ranges'] as $index => $range) {
+        // Add spacer between SOWs
+        if ($index > 0) {
+          $sow_split_interval = $range[0] - $vars['ranges'][$index-1][1];
+          $sow_split_percent = ceil($sow_split_interval / $full_range * 100);
+          $return['#markup'] .= '<div class="progress-bar-segment progress-bar-segment-divider" style="width: ' . $sow_split_percent . '%;"></div>';
+        }
+        // See if this range contains today
+        if (REQUEST_TIME >= $range[0] && REQUEST_TIME <= $range[1]) {
+          $before_today = floor((REQUEST_TIME - $range[0]) / $full_range * 100);
+          $after_today = floor(($range[1] - REQUEST_TIME) / $full_range * 100);
+          $return['#markup'] .= '<div class="progress-bar-segment ' . $class . '" style="width: ' . $before_today . '%;"></div>';
+          $class = 'progress-bar-segment-future';
+          $return['#markup'] .= '<div class="progress-bar-segment ' . $class . '" style="width: ' . $after_today . '%;"></div>';
+        }
+        else {
+          $percentage = floor(($range[1] - $range[0]) / $full_range * 100);
+          $return['#markup'] .= '<div class="progress-bar-segment ' . $class . '" style="width: ' . $percentage . '%;"></div>';
+        }
+      }
+    }
+  }
+  return drupal_render($return);
+}

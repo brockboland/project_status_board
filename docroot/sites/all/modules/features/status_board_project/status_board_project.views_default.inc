@@ -126,7 +126,10 @@ function status_board_project_views_default_views() {
   $handler->display->display_options['fields']['field_sows']['id'] = 'field_sows';
   $handler->display->display_options['fields']['field_sows']['table'] = 'field_data_field_sows';
   $handler->display->display_options['fields']['field_sows']['field'] = 'field_sows';
+  $handler->display->display_options['fields']['field_sows']['label'] = '';
+  $handler->display->display_options['fields']['field_sows']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sows']['click_sort_column'] = 'field_name_value';
+  $handler->display->display_options['fields']['field_sows']['type'] = 'sow_progress';
   $handler->display->display_options['fields']['field_sows']['settings'] = array(
     'view_mode' => 'default',
   );
