@@ -1,1 +1,1 @@
-Project Status Board
+This Project Status Board prototype doesn't do much. The logic is contained in the [status_board_project](https://github.com/brockboland/project_status_board/tree/master/docroot/sites/all/modules/features/status_board_project) Feature module. This defines a Project node type, and since I was just whipping up a quick prototype, I didn't bother documenting it at the time (and thus, don't really remember the details).
